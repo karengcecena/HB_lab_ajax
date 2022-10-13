@@ -41,12 +41,6 @@ document.querySelector('#weather-form').addEventListener('submit', showWeather);
 
 // PART 3: ORDER MELONS
 
-
-
-
-
-/////////////////////////
-
 function orderMelons(evt) {
   evt.preventDefault();
 
@@ -78,5 +72,27 @@ function orderMelons(evt) {
       console.log(responseJson);
     });
   };
-
+  
   document.querySelector('#order-form').addEventListener('submit', orderMelons);
+
+
+
+  // PART 4: Dogs (Further Study)
+
+  function dogImage() {
+  
+    // TODO: show the result message after your form
+    const url = "https://dog.ceo/api/breeds/image/random"
+  
+    fetch(url)
+      .then((response) => response.json())
+      .then((responseJson) => {
+         const image = responseJson.message;
+         document.querySelector("#dog-image").insertAdjacentHTML('beforeend', `<div><img src=${image}></img></div>`);
+      })
+  }; 
+    
+  document.querySelector('#get-dog-image').addEventListener('click', dogImage);
+
+// note: did not have to get/ post info because we are not passing info into python and back
+// instead, we are using the url to obtain the json
